@@ -1,8 +1,10 @@
-var data =
+var badger =
 {
-    "stringField" : "This is a string field",
-    "stringFieldTwo" : "the second string field",
-    "dateField" : "2012-01-01T12.30.59",
-    "numberField" : "123.1234",
-    object : {"subfield" : "subfield data"}
+    "name" : "Brian the badger",
+    "age" : 42,
+    "dob" : "2004-03-06T12:10:30",
+    "child1" : {
+        "name" : "nipper",
+        "age" : 5
+    }
 }

@@ -116,7 +116,7 @@
     $.fn.inject.defaults = {
         "identifier": "!",
         "databind":true,
-        "stringreplace":true
+        "stringreplace":false
     };
 
 

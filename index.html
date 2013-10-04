@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Inject test page</title>
-    <script src="jquery-1.10.2.min.js" ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="inject.js"></script>
     <script src="data.js"></script>
 </head>
@@ -10,40 +10,35 @@
 
 <h1>Test page for my inject plugin</h1>
 
+<p>Click 'inject' to update the list below with badger data.</p>
+
 <div>
     <ul>
-        <li>String field : !stringField</li>
-        <li>Longer name : !stringFieldTwo</li>
-        <li>Date field : !dateField</li>
-        <li>Number field : !numberField</li>
-        <li>Embedded object : !object.subfield</li>
-    </ul>
-    <h2>Same again but using data-bind</h2>
-    <ul>
-        <li data-bind="stringField"></li>
-        <li data-bind="stringFieldTwo"></li>
-        <li data-bind="dateField" data-bind-formatter="dateformatter"></li>
-        <li data-bind="numberField" data-bind-formatter="numberformatter"></li>
-        <li data-bind="object.subfield"></li>
+        <li data-bind="name">badger name</li>
+        <li data-bind="age">age</li>
+        <li data-bind="dob" data-bind-formatter="dateformatter">dob</li>
+        <ul>
+            <li data-bind="child1.name">child1.name</li>
+            <li data-bind="child1.age">child1.age</li>
+        </ul>
+
     </ul>
     <button>Inject!</button>
 </div>
 
 <script>
 
-    function dateformatter(date) {
-        console.log("formatting the date...")
-        return "yeah ok"
-    }
+    function dateformatter(input) {
+        var newdate = new Date(input);
+        return newdate.getFullYear()
+                + '-' + (newdate.getMonth() + 1)
+                + '-' + newdate.getDate()
 
-    function numberformatter(number) {
-        console.log("formatting number")
-        return number + "#,##"
     }
 
     $(document).ready(function(){
         $('button').click(function(){
-            $('div').inject(data,{"stringreplace":true});
+            $('div').inject(badger);
         })
     })
 </script>
