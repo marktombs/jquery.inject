@@ -34,9 +34,6 @@
         // defaults
         var settings = $.extend({}, $.fn.inject.defaults, options);
 
-        var foundReplace = false;
-        var html;
-
         // ----------------------------------------
         // Inject an object into the elements.
 
@@ -64,12 +61,10 @@
                     }
 
                     if (path) key = path + "." + key;
-                    console.log("Looking for " + key);
 
                     // Look for a data-bind element and replace its contents
                     // with the value from the object
                     $(element).find('*[data-bind="' + key + '"]').each(function (i, e) {
-                        console.log("Found element, injecting");
                         var formatter = $(e).data('bind-formatter');
                         if (formatter) {
                             // FIXME I know, eval is evil.
